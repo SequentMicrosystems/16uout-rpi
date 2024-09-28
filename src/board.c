@@ -30,23 +30,21 @@ int doBoard(int argc, char *argv[])
 		return ERROR ;
 	}
 	uint8_t buf[3];
-	if (OK != i2cMem8Read(dev, I2C_MEM_DIAG_TEMPERATURE_ADD, buf, 3))
-	{
-		printf("Fail to read board info!\n");
-		return ERROR ;
-	}
-	uint8_t temperature = buf[0];
-	int16_t resp;
-	memcpy(&resp, &buf[1], 2);
-	float vIn = (float)resp / VOLT_TO_MILIVOLT; //read in milivolts
+//	if (OK != i2cMem8Read(dev, I2C_MEM_DIAG_TEMPERATURE_ADD, buf, 3))
+//	{
+//		printf("Fail to read board info!\n");
+//		return ERROR ;
+//	}
+//	uint8_t temperature = buf[0];
+//	int16_t resp;
+//	memcpy(&resp, &buf[1], 2);
+//	float vIn = (float)resp / VOLT_TO_MILIVOLT; //read in milivolts
 	if (ERROR == i2cMem8Read(dev, I2C_MEM_REVISION_MAJOR_ADD, buf, 2))
 	{
 		printf("Fail to read board info!\n");
 		return ERROR ;
 	}
-	printf(
-		"Firmware version %d.%d, CPU temperature %d C, Power source %0.2f V\n",
-		(int)buf[0], (int)buf[1], temperature, vIn);
+	printf( "Firmware version %d.%d \n", (int)buf[0], (int)buf[1]);
 	return OK ;
 }
 
