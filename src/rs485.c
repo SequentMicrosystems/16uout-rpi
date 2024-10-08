@@ -25,7 +25,7 @@ const CliCmdType CMD_CFG485_READ =
 	&doCfg485Read,
 	"  cfg485rd         Display the card RS485 port settings\n",
 	"  Usage:           "PROGRAM_NAME" <id> cfg485rd\n",
-	"  Example:         "PROGRAM_NAME" 0 motrd  Display RS485 port settings \n"
+	"  Example:         "PROGRAM_NAME" 0 cfg485rd  Display RS485 port settings \n"
 };
 int doCfg485Read(int argc, char *argv[])
 {
