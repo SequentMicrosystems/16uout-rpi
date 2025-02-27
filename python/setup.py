@@ -14,9 +14,9 @@ with open("README.md", 'r') as f:
 
 from setuptools import setup, find_packages
 setup(
-    name='SM16uout',
+    name='sm16uout',
     packages=find_packages(),
-    version='1.0.0',
+    version='1.0.1',
     license='MIT',
     description='Library to control Sixteen 0-10V Analog Outputs Card',
     long_description=long_description,
