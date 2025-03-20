@@ -16,7 +16,7 @@ from setuptools import setup, find_packages
 setup(
     name='sm16uout',
     packages=find_packages(),
-    version='1.0.2',
+    version='1.0.3',
     license='MIT',
     description='Library to control Sixteen 0-10V Analog Outputs Card',
     long_description=long_description,

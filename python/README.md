@@ -129,7 +129,7 @@ Set the RS485 port parameters
 
 * **Parameters:**
   * **modbus** (*0/1*) – 1: turn ON, 2: turn OFF
-  * **modbusId** (*1..254*)
+  * **modbusId** (*1..254*) – modbus ID
   * **baudrate** (*1200..115200*) – baud rate (default: 38400)
   * **stopbits** (*1/2*) – stop bits (default: 1)
   * **parity** (*0/1/2*) – stop bits (default: 0 - None)

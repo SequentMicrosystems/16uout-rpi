@@ -153,7 +153,7 @@ class SM16uout:
         Returns:
             (int) Leds state bitmask
         """
-        return self._get_byte(I2C_MEM.LEDS)
+        return self._get_word(I2C_MEM.LEDS)
     def set_led(self, led, val):
         """Set led state.
 
@@ -174,7 +174,7 @@ class SM16uout:
         """
         if(not (0 <= val and val <= (1 << CHANNEL_NO["led"]) - 1)):
             raise ValueError("Invalid led mask!")
-        self._set_byte(I2C_MEM.LEDS, val)
+        self._set_word(I2C_MEM.LEDS, val)
 
     def get_rs485(self):
         """NOT IMPLEMENTED"""
@@ -186,7 +186,7 @@ class SM16uout:
 
         Args:
             modbus (0/1): 1: turn ON, 2: turn OFF
-            modbusId (1..254):
+            modbusId (1..254): modbus ID
             baudrate (1200..115200): baud rate (default: 38400)
             stopbits (1/2): stop bits (default: 1)
             parity (0/1/2): stop bits (default: 0 - None)
