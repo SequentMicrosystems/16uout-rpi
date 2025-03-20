@@ -2,7 +2,7 @@
 
 from smbus2 import SMBus
 import struct
-import datetime
+import time
 
 import SM16uout.SM16uout_data as data
 I2C_MEM = data.I2C_MEM
@@ -23,8 +23,8 @@ class SM16uout:
         self._i2c_bus_no = i2c
         self.bus = SMBus(self._i2c_bus_no)
         try:
-            self._card_rev_major = self.bus.read_byte_data(self._hw_address_, I2C_MEM.REVISION_HW_MAJOR_ADD)
-            self._card_rev_minor = self.bus.read_byte_data(self._hw_address_, I2C_MEM.REVISION_HW_MINOR_ADD)
+            self.bus.read_byte_data(self._hw_address_, I2C_MEM.REVISION_HW_MAJOR_ADD)
+            time.sleep(0.01)
         except Exception:
             print("{} not detected!".format(data.CARD_NAME))
             raise
@@ -93,6 +93,7 @@ class SM16uout:
         Returns: (int) Firmware version number
         """
         version_major = self._get_byte(I2C_MEM.REVISION_MAJOR_ADD)
+        time.sleep(0.01)
         version_minor = self._get_byte(I2C_MEM.REVISION_MINOR_ADD)
         version = str(version_major) + "." + str(version_minor)
         return version
