@@ -85,8 +85,8 @@ int doCfg485Write(int argc, char *argv[])
 	{
 		settings.mbType = 0;
 		settings.mbBaud = 38400; //default 
-		settings.mbParity = 0;
 		settings.mbStopB = 1;
+		settings.mbParity = 0;
 		settings.add = 1;
 	}
 	else //  enable the modbus and we need all the parameters
@@ -94,6 +94,11 @@ int doCfg485Write(int argc, char *argv[])
 		if (argc != 8)
 		{
 			return ARG_CNT_ERR;
+		}
+		if (aux != 1)
+		{
+			printf("Modbus mode must be [0/1]; 0=disable, 1=Modbus RTU\n");
+			return ARG_RANGE_ERROR;
 		}
 		settings.mbType = 1;
 		aux = atoi(argv[4]); // Modbus ID
@@ -120,7 +125,7 @@ int doCfg485Write(int argc, char *argv[])
 		aux = atoi(argv[7]); // Parity
 		if (aux < 0 || aux > 2)
 		{
-			printf("Parity must be [0/1/2]\n");
+			printf("Parity must be [0/1/2]; 0=none, 1=odd, 2=even\n");
 			return ARG_RANGE_ERROR;
 		}
 		settings.mbParity = aux;
@@ -138,4 +143,3 @@ int doCfg485Write(int argc, char *argv[])
 	}
 	return OK;
 }
-
